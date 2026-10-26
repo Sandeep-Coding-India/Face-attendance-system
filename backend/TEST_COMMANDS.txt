@@ -1,0 +1,35 @@
+STEP 9 TESTS
+
+1. Start backend:
+
+uvicorn app.main:app --reload
+
+2. Open:
+
+http://127.0.0.1:8000/docs
+
+3. Check that these endpoints exist:
+
+POST /auth/forgot-password/request-otp
+POST /auth/forgot-password/verify-otp
+POST /auth/forgot-password/reset
+POST /auth/forgot-password/login-id/request-otp
+POST /auth/forgot-password/login-id/verify-otp
+
+4. Email recovery test body:
+
+{
+  "company_id": "YOUR_COMPANY_ID",
+  "recovery_method": "email",
+  "recovery_value": "REGISTERED_EMAIL"
+}
+
+5. Phone recovery test body:
+
+{
+  "company_id": "YOUR_COMPANY_ID",
+  "recovery_method": "phone",
+  "recovery_value": "+919876543210"
+}
+
+Do not test with a random phone/email. It must match the management account registered in your database.

@@ -1,0 +1,14 @@
+IMPORTANT
+
+The recovery router expects your existing User model to contain:
+- id
+- role
+- password_hash
+- email for email recovery
+- phone for phone recovery
+- one of: login_id / unique_login_id / username / user_code for Login ID recovery
+- company OR company_id/company_code for company scoping
+
+The router automatically adds a PostgreSQL users.phone column when phone recovery is requested if that column does not already exist.
+
+For NEW Admin/HR/Manager accounts, make sure the account creation code saves the user's phone number into users.phone. Otherwise phone recovery cannot work for accounts that have no phone registered.
